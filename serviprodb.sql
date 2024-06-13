@@ -1,27 +1,14 @@
 CREATE DATABASE dbservipro;
 USE dbservipro;
 
-DESCRIBE usuarios;
-DESCRIBE clientes;
-DESCRIBE os;
-ALTER TABLE os ADD COLUMN situacao varchar(100) NOT NULL;
-ALTER TABLE os DROP COLUMN situação;
-update usuarios set telefone= "(11) 97756-8690" WHERE id_user=1;
-update usuarios set telefone= "(71) 97450-3199" WHERE id_user=2;
-update clientes set nome_client= "Lucas Almeida" WHERE id_client=1;
-
-select * from usuarios;
-select * from clientes;
-select id_client as id, nome_client as nome, endereco_client as endereço, telefone_client as telefone, email_client as email from clientes;
-select * from os;
-
 -- os blocos de código abaixo criam as tabelas do banco de dados:
 CREATE TABLE usuarios(
-	id_user int PRIMARY KEY,
-    usuario varchar(15) NOT NULL,
-    telefone varchar(15),
-    login varchar(15) NOT NULL UNIQUE,
-    senha varchar(250) NOT NULL
+	id_user int primary key,
+    usuario varchar(15) not null,
+    fone varchar(15),
+    login varchar(15) not null unique,
+    senha varchar(250) not null,
+    perfil varchar(20) not null
 );
 
 CREATE TABLE clientes(
@@ -46,13 +33,14 @@ CREATE TABLE os(
     situacao varchar(25) NOT NULL
 );
 
-Drop table os;
 
 -- as linhas de código abaixo descrevem as tabelas criadas:
 DESCRIBE usuarios;
 DESCRIBE clientes;
 DESCRIBE os;
-
+select * from usuarios;
+select * from clientes;
+select * from os;
 -- as linhas abaixo inserem dados nas tabelas:
 -- usuarios:
 INSERT INTO usuarios(id_user,usuario,login,senha)
